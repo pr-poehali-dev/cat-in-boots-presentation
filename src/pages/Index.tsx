@@ -5,6 +5,14 @@ const PERRAULT_IMG = "https://cdn.poehali.dev/projects/db172e21-3e91-45b3-81c4-3
 const CAT_IMG = "https://cdn.poehali.dev/projects/db172e21-3e91-45b3-81c4-364d7b91b252/files/bc87269d-549d-4680-b8fa-84749657be84.jpg";
 const HEROES_IMG = "https://cdn.poehali.dev/projects/db172e21-3e91-45b3-81c4-364d7b91b252/files/9da95b0f-5d49-415c-a4d0-294b6e7c502a.jpg";
 
+const CARD1_IMG = "https://cdn.poehali.dev/projects/db172e21-3e91-45b3-81c4-364d7b91b252/files/f0a4b2e6-e28d-4a23-b53c-837de68efc69.jpg";
+const CARD2_IMG = "https://cdn.poehali.dev/projects/db172e21-3e91-45b3-81c4-364d7b91b252/files/0c4c55fe-5a6b-4e64-a9b2-2f60b8060a66.jpg";
+const CARD3_IMG = "https://cdn.poehali.dev/projects/db172e21-3e91-45b3-81c4-364d7b91b252/files/e0701678-5fb6-4bb1-a58b-1121a031d6d2.jpg";
+const CARD4_IMG = "https://cdn.poehali.dev/projects/db172e21-3e91-45b3-81c4-364d7b91b252/files/9afe3913-1423-4e48-8358-0fe54eb71b14.jpg";
+const WORDCLOUD_IMG = "https://cdn.poehali.dev/projects/db172e21-3e91-45b3-81c4-364d7b91b252/files/552067f3-8b91-4626-b9ee-0ce6e58015da.jpg";
+const CLUSTER_IMG = "https://cdn.poehali.dev/projects/db172e21-3e91-45b3-81c4-364d7b91b252/files/d30694a0-5cef-47cb-a60f-7b04b4ea316f.jpg";
+const SMILEYS_IMG = "https://cdn.poehali.dev/projects/db172e21-3e91-45b3-81c4-364d7b91b252/files/adeb267f-24e1-4cac-b20e-581fcbc21a3e.jpg";
+
 const slides = [
   { id: 0, label: "Титул", emoji: "📖" },
   { id: 1, label: "Разминка", emoji: "🗣️" },
@@ -15,6 +23,7 @@ const slides = [
   { id: 6, label: "Пересказ", emoji: "📝" },
   { id: 7, label: "Пословица", emoji: "💡" },
   { id: 8, label: "Рефлексия", emoji: "🌈" },
+  { id: 9, label: "Материалы", emoji: "🖨️" },
 ];
 
 const quizQuestions = [
@@ -362,6 +371,61 @@ export default function Index() {
                 <div className="font-caveat text-xl">Расскажи классу, почему ты выбрал эту пословицу!</div>
               </div>
             )}
+          </div>
+        )}
+
+        {/* SLIDE 9: РАЗДАТОЧНЫЙ И НАГЛЯДНЫЙ МАТЕРИАЛ */}
+        {current === 9 && (
+          <div className="w-full max-w-5xl">
+            <div className="text-center mb-6">
+              <div className="font-pacifico text-4xl text-indigo-700 mb-2">🖨️ Раздаточный материал</div>
+              <div className="font-caveat text-xl text-indigo-400">Карточки на парты и наглядность для доски</div>
+            </div>
+
+            <div className="mb-6">
+              <div className="font-pacifico text-2xl text-purple-600 mb-3">📋 Карточки на парты</div>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                {[
+                  { img: CARD1_IMG, label: "Карточка №1", sub: "Цепочка событий", color: "border-pink-400" },
+                  { img: CARD2_IMG, label: "Карточка №2", sub: "Характер героя", color: "border-orange-400" },
+                  { img: CARD3_IMG, label: "Карточка №3", sub: "Верю — не верю", color: "border-green-400" },
+                  { img: CARD4_IMG, label: "Карточка №4", sub: "Имена героев", color: "border-purple-400" },
+                ].map((card, i) => (
+                  <a key={i} href={card.img} target="_blank" rel="noopener noreferrer"
+                    className={`block rounded-2xl overflow-hidden border-4 ${card.color} shadow-lg hover:scale-105 transition-all duration-200 cursor-zoom-in`}>
+                    <img src={card.img} alt={card.label} className="w-full aspect-[3/4] object-cover" />
+                    <div className="bg-white p-2 text-center">
+                      <div className="font-bold text-sm text-gray-800">{card.label}</div>
+                      <div className="font-caveat text-sm text-gray-500">{card.sub}</div>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <div className="font-pacifico text-2xl text-indigo-600 mb-3">🖼️ Наглядность для доски</div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                {[
+                  { img: WORDCLOUD_IMG, label: "Облако слов", sub: "Ключевые слова урока", color: "border-blue-400" },
+                  { img: CLUSTER_IMG, label: "Кластер", sub: "Схема про Кота", color: "border-teal-400" },
+                  { img: SMILEYS_IMG, label: "Смайлики", sub: "Рефлексия — вырежьте", color: "border-yellow-400" },
+                ].map((item, i) => (
+                  <a key={i} href={item.img} target="_blank" rel="noopener noreferrer"
+                    className={`block rounded-2xl overflow-hidden border-4 ${item.color} shadow-lg hover:scale-105 transition-all duration-200 cursor-zoom-in`}>
+                    <img src={item.img} alt={item.label} className="w-full aspect-video object-cover" />
+                    <div className="bg-white p-2 text-center">
+                      <div className="font-bold text-sm text-gray-800">{item.label}</div>
+                      <div className="font-caveat text-sm text-gray-500">{item.sub}</div>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-4 bg-indigo-50 rounded-2xl p-4 border-2 border-indigo-200 text-center">
+              <div className="font-caveat text-lg text-indigo-600">🖨️ Нажми на карточку, чтобы открыть в полном размере и распечатать</div>
+            </div>
           </div>
         )}
 
