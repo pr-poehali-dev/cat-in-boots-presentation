@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const S1 = "https://cdn.poehali.dev/projects/db172e21-3e91-45b3-81c4-364d7b91b252/files/5ce95c68-2535-4728-b699-e0197c95f962.jpg";
 const S2 = "https://cdn.poehali.dev/projects/db172e21-3e91-45b3-81c4-364d7b91b252/files/4922570b-481e-4986-8ca5-69e54c5682cd.jpg";
@@ -65,6 +66,7 @@ const slideTitles = [
 ];
 
 export default function Slog() {
+  const navigate = useNavigate();
   const [current, setCurrent] = useState(0);
 
   const goTo = (idx: number) => {
@@ -74,7 +76,11 @@ export default function Slog() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-100 via-green-50 to-yellow-100 flex flex-col" style={{ fontFamily: "'Nunito', sans-serif" }}>
       <div className="flex items-center justify-between px-4 py-2 bg-white/80 backdrop-blur-sm shadow-sm sticky top-0 z-50">
-        <div className="font-bold text-blue-600 text-lg hidden sm:block">🚂 Слоги</div>
+        <div className="flex items-center gap-2">
+          <button onClick={() => navigate("/")} className="text-xs px-2 py-1 rounded-lg bg-purple-100 text-purple-600 font-bold hover:bg-purple-200 transition-all hidden sm:block">← Перро</button>
+          <button onClick={() => navigate("/mnozh")} className="text-xs px-2 py-1 rounded-lg bg-orange-100 text-orange-600 font-bold hover:bg-orange-200 transition-all hidden sm:block">✖️ Умножение</button>
+          <span className="font-bold text-blue-600 text-lg hidden sm:block">🚂 Слоги</span>
+        </div>
         <div className="flex gap-1 overflow-x-auto max-w-full">
           {slides.map((s) => (
             <button
