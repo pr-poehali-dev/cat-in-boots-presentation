@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Icon from "@/components/ui/icon";
 
 const PERRAULT_IMG = "https://cdn.poehali.dev/projects/db172e21-3e91-45b3-81c4-364d7b91b252/files/852d77de-d4b7-435f-955f-76a80770431f.jpg";
@@ -75,6 +76,7 @@ const physSteps = [
 ];
 
 export default function Index() {
+  const navigate = useNavigate();
   const [current, setCurrent] = useState(0);
   const [quizAnswers, setQuizAnswers] = useState<Record<number, boolean | null>>({});
   const [selectedProverb, setSelectedProverb] = useState<number | null>(null);
@@ -89,7 +91,13 @@ export default function Index() {
     <div className="min-h-screen bg-gradient-to-br from-purple-100 via-pink-50 to-yellow-100 font-nunito flex flex-col">
       {/* TOP NAV */}
       <div className="flex items-center justify-between px-4 py-2 bg-white/80 backdrop-blur-sm shadow-sm sticky top-0 z-50">
-        <div className="font-pacifico text-purple-600 text-lg hidden sm:block">🧙 Перро</div>
+        <div className="flex items-center gap-2">
+          <div className="font-pacifico text-purple-600 text-lg hidden sm:block">🧙 Перро</div>
+          <button
+            onClick={() => navigate("/slog")}
+            className="hidden sm:block text-xs px-2 py-1 rounded-lg bg-blue-100 text-blue-600 font-bold hover:bg-blue-200 transition-all"
+          >🚂 Слоги</button>
+        </div>
         <div className="flex gap-1 overflow-x-auto max-w-full">
           {slides.map((s) => (
             <button
