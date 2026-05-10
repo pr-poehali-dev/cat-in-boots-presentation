@@ -61,6 +61,10 @@ export default function Mnozh() {
             onClick={() => navigate("/slog")}
             className="text-xs px-2 py-1 rounded-lg bg-blue-100 text-blue-600 font-bold hover:bg-blue-200 transition-all hidden sm:block"
           >🚂 Слоги</button>
+          <button
+            onClick={() => navigate("/kreml")}
+            className="text-xs px-2 py-1 rounded-lg bg-red-100 text-red-600 font-bold hover:bg-red-200 transition-all hidden sm:block"
+          >🏰 Кремль</button>
           <span className="font-bold text-orange-600 text-lg">✖️ Умножение на 3</span>
         </div>
         <div className="flex gap-1">
